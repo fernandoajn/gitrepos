@@ -13,7 +13,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: orange;
+    background: #F2784B;
     -webkit-font-smoothing: antialiased !important;
   }
 

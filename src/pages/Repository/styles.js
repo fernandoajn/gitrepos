@@ -29,6 +29,13 @@ export const Owner = styled.header`
   flex-direction: column;
   align-items: center;
 
+  & > div {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+  }
+
   a {
     color: orange;
     font-size: 16px;
@@ -61,6 +68,41 @@ export const IssueList = styled.ul`
   border-top: 1px solid #eee;
   list-style: none;
 
+  & > p {
+    color: #999;
+    text-align: center;
+  }
+
+  & > div {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+
+    strong {
+      font-size: 16px;
+    }
+
+    button {
+      background: none;
+      outline: 0;
+      border: 0;
+
+      svg {
+        color: #f2784b;
+      }
+
+      &[disabled] {
+        cursor: not-allowed;
+
+        svg {
+          color: #eee;
+        }
+      }
+    }
+  }
+
   li {
     display: flex;
     padding: 15px 10px;
@@ -90,7 +132,7 @@ export const IssueList = styled.ul`
           color: #333;
 
           &:hover {
-            color: orange;
+            color: #f9690e;
           }
         }
 
