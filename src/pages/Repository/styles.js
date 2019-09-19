@@ -175,3 +175,35 @@ export const IssueList = styled.ul`
     }
   }
 `;
+
+export const FilterList = styled.ul`
+  height: 30px;
+  margin-top: 20px;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    margin-left: 15px;
+
+    button {
+      background: #0e9ef9;
+      border-radius: 5px;
+      padding: 5px 10px;
+      border: 1px solid #0581cf;
+      font-weight: bold;
+      color: white;
+      transition: 0.3s;
+
+      &:hover {
+        color: #0e9ef9;
+        background: white;
+      }
+    }
+  }
+
+  li:first-of-type {
+    margin-left: 0;
+  }
+`;

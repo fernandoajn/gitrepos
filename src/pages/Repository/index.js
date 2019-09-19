@@ -9,7 +9,7 @@ import {
   FaAngleDoubleRight,
   FaChevronCircleLeft,
 } from 'react-icons/fa';
-import { Loading, Owner, IssueList } from './styles';
+import { Loading, Owner, IssueList, FilterList } from './styles';
 
 import Container from '../../components/Container';
 import api from '../../services/api';
@@ -28,6 +28,7 @@ export default class Repository extends Component {
     issues: [],
     loading: true,
     page: 1,
+    filter: 'all',
   };
 
   async componentDidMount() {
@@ -39,7 +40,7 @@ export default class Repository extends Component {
       api.get(`repos/${repoName}`),
       api.get(`repos/${repoName}/issues`, {
         params: {
-          state: 'open',
+          state: 'all',
           per_page: 5,
         },
       }),
@@ -55,12 +56,13 @@ export default class Repository extends Component {
 
   loadIssues = async () => {
     const { match } = this.props;
-    const { page } = this.state;
+    const { page, filter } = this.state;
 
     const repoName = decodeURIComponent(match.params.repository);
 
     const response = await api.get(`repos/${repoName}/issues`, {
       params: {
+        state: filter,
         per_page: 5,
         page,
       },
@@ -74,6 +76,14 @@ export default class Repository extends Component {
 
     await this.setState({
       page: action === 'prev' ? page - 1 : page + 1,
+    });
+
+    this.loadIssues();
+  };
+
+  handleFilter = async action => {
+    await this.setState({
+      filter: action,
     });
 
     this.loadIssues();
@@ -103,6 +113,24 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
+
+        <FilterList>
+          <li>
+            <button type="button" onClick={() => this.handleFilter('all')}>
+              All
+            </button>
+          </li>
+          <li>
+            <button type="button" onClick={() => this.handleFilter('open')}>
+              Open
+            </button>
+          </li>
+          <li>
+            <button type="button" onClick={() => this.handleFilter('closed')}>
+              Closed
+            </button>
+          </li>
+        </FilterList>
 
         <IssueList>
           {issues.length > 0 ? (
