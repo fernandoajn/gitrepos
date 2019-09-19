@@ -95,8 +95,8 @@ export default class Repository extends Component {
         <Owner>
           <div>
             <Link to="/">
-              <FaChevronCircleLeft color="orange" size={20} /> Back to
-              Repositories
+              <FaChevronCircleLeft color="#f2784b" size={22} />
+              <span>Get back</span>
             </Link>
           </div>
           <img src={repository.owner.avatar_url} alt={repository.owner.login} />
@@ -130,13 +130,13 @@ export default class Repository extends Component {
                 disabled={page === 1}
                 onClick={() => this.handlePage('prev')}
               >
-                <FaAngleDoubleLeft size={24} />
+                <FaAngleDoubleLeft size={24} /> <span>Previous</span>
               </button>
 
               <strong>{page}</strong>
 
               <button type="button" onClick={() => this.handlePage('next')}>
-                <FaAngleDoubleRight size={24} />
+                <span>Next</span> <FaAngleDoubleRight size={24} />
               </button>
             </div>
           )}

@@ -31,13 +31,22 @@ export const Owner = styled.header`
 
   & > div {
     display: flex;
-    justify-content: flex-start;
+    align-items: baseline;
     width: 100%;
-    align-items: center;
+
+    a {
+      display: flex;
+      align-items: center;
+
+      span {
+        display: inline-block;
+        margin-left: 10px;
+      }
+    }
   }
 
   a {
-    color: orange;
+    color: #f2784b;
     font-size: 16px;
     text-decoration: none;
   }
@@ -81,22 +90,32 @@ export const IssueList = styled.ul`
     margin-top: 20px;
 
     strong {
-      font-size: 16px;
+      font-size: 14px;
     }
 
     button {
       background: none;
       outline: 0;
       border: 0;
+      display: flex;
+      align-items: center;
 
-      svg {
+      svg,
+      span {
         color: #f2784b;
+      }
+
+      span {
+        display: inline-block;
+        font-size: 14px;
+        margin: 0 10px;
       }
 
       &[disabled] {
         cursor: not-allowed;
 
-        svg {
+        svg,
+        span {
           color: #eee;
         }
       }
