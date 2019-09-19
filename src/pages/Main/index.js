@@ -58,6 +58,7 @@ export default class Main extends Component {
         repositories: [...repositories, data],
         newRepo: '',
         loading: false,
+        invalidInput: false,
       });
     } catch (error) {
       console.warn(error);
